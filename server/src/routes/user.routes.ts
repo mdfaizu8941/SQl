@@ -67,7 +67,8 @@ router.put('/password', requireAuth, async (req: AuthRequest, res: Response) => 
 router.get('/export', requireAuth, async (req: AuthRequest, res: Response) => {
   try {
     const userId = req.user!.id;
-    const format = req.query.format || 'json';
+    const rawFormat = req.query.format;
+    const format = typeof rawFormat === 'string' ? rawFormat : (Array.isArray(rawFormat) && typeof rawFormat[0] === 'string' ? rawFormat[0] : 'json');
 
     const fullUser = await prisma.user.findUnique({
       where: { id: userId },

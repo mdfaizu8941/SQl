@@ -142,8 +142,11 @@ router.get('/history', requireAuth, async (req: AuthRequest, res: Response) => {
 
 router.delete('/history/:id', requireAuth, async (req: AuthRequest, res: Response) => {
   try {
+    const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+    if (!id || typeof id !== 'string') return res.status(400).json({ error: 'Invalid ID' });
+
     await prisma.sqlQuery.delete({
-      where: { id: req.params.id, userId: req.user!.id }
+      where: { id, userId: req.user!.id }
     });
     res.json({ success: true });
   } catch (error) {
