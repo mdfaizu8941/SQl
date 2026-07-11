@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Table, LayoutTemplate, Plus, Edit2, Trash2, Download, X, Key, AlignLeft } from 'lucide-react';
+import { Table, LayoutTemplate, Trash2, X, Key } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { Skeleton } from '../components/ui/skeleton';
@@ -174,7 +174,9 @@ export default function Database() {
                         <td className="px-4 py-3 font-medium flex items-center gap-2">
                           {col.name}
                           {(col.isPrimary || col.isPrimaryKey) && (
-                            <Key className="w-3 h-3 text-amber-500" title="Primary Key" />
+                            <span title="Primary Key">
+                              <Key className="w-3 h-3 text-amber-500" />
+                            </span>
                           )}
                         </td>
                         <td className="px-4 py-3 font-mono text-xs text-primary/80">{col.type}</td>

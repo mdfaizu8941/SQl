@@ -4,7 +4,7 @@ import { Search, Star, Trash2, Clock, X, Code2, Copy } from 'lucide-react';
 import { Input } from '../components/ui/input';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
-import { Card, CardContent } from '../components/ui/card';
+
 import { toast } from 'sonner';
 import axios from 'axios';
 
