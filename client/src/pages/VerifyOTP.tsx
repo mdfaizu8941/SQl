@@ -73,7 +73,8 @@ export default function VerifyOTP() {
         }
       }
     } catch (error: any) {
-      toast.error(error.response?.data?.error || 'Verification failed');
+      const errMsg = error.response?.data?.error;
+      toast.error(typeof errMsg === 'string' ? errMsg : 'Verification failed');
     } finally {
       setIsLoading(false);
     }

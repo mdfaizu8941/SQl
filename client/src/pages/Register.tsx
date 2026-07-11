@@ -30,7 +30,8 @@ export default function Register() {
         navigate('/verify-otp', { state: { email } });
       }
     } catch (error: any) {
-      toast.error(error.response?.data?.error || 'Registration failed');
+      const errMsg = error.response?.data?.error;
+      toast.error(typeof errMsg === 'string' ? errMsg : 'Registration failed');
     } finally {
       setIsLoading(false);
     }

@@ -31,7 +31,8 @@ export default function Login() {
         }
       }
     } catch (error: any) {
-      toast.error(error.response?.data?.error || 'Login failed');
+      const errMsg = error.response?.data?.error;
+      toast.error(typeof errMsg === 'string' ? errMsg : 'Login failed');
     } finally {
       setIsLoading(false);
     }
